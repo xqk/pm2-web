@@ -21,7 +21,7 @@ router.get('/', async (ctx) => {
 })
 
 router.get('/login', loginRateLimiter, checkAuthentication, async (ctx) => {
-    return await ctx.render('auth/login', {layout: false, login: {username: '', password: '', error: null}})
+    return await ctx.render('auth/login', {layout: false, login: {username: '', password: '', error: null}, username: ctx.session.username, })
 })
 
 router.post('/login', loginRateLimiter, checkAuthentication, async (ctx) => {
@@ -42,6 +42,7 @@ router.get('/apps', isAuthenticated, async (ctx) => {
     return await ctx.render('apps/dashboard', {
         apps,
         isAdmin,
+        username: ctx.session.username,
     });
 });
 
@@ -73,6 +74,7 @@ router.get('/apps/:appName', isAuthenticated, async (ctx) => {
                 stderr
             },
             isAdmin,
+            username: ctx.session.username,
         });
     }
     return ctx.redirect('/apps')
@@ -93,7 +95,7 @@ router.get('/api/apps/:appName/logs/:logType', isAuthenticated, async (ctx) => {
         return ansiConvert.toHtml(log)
     }).join('<br/>')
     return ctx.body = {
-        logs
+        logs,
     };
 });
 

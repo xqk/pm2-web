@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <head>
-    <title>PM2 WebUI</title>
+    <title>PM2 管理平台</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/jpg" href="/assets/images/app/favicon.png"/>
+    <link rel="shortcut icon" type="image/jpg" href="/assets/images/app/favicon.ico"/>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/@tabler/core@1.0.0-beta2/dist/js/tabler.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/@tabler/core@1.0.0-beta2/dist/css/tabler.min.css">
@@ -24,7 +24,7 @@
               <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
                 <span class="avatar avatar-sm" style="background-image: url(/assets/images/app/user.svg)"></span>
                 <div class="d-none d-xl-block ps-2">
-                  <div>System Admin</div>
+                  <div><% if(username !== ""){ %><%= username %><% } %></div>
                 </div>
               </a>
               <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
