@@ -6,7 +6,7 @@ const {validateAdminUser} = require('../services/admin.service')
 const {readLogsReverse} = require('../utils/read-logs.util')
 const {getCurrentGitBranch, getCurrentGitCommit} = require('../utils/git.util')
 const {getEnvFileContent} = require('../utils/env.util')
-const {isAuthenticated, checkAuthentication} = require('../middlewares/auth')
+const {isAuthenticated, isAdminAuthenticated, checkAuthentication} = require('../middlewares/auth')
 const AnsiConverter = require('ansi-to-html');
 const ansiConvert = new AnsiConverter();
 
@@ -99,7 +99,7 @@ router.get('/api/apps/:appName/logs/:logType', isAuthenticated, async (ctx) => {
     };
 });
 
-router.post('/api/apps/:appName/reload', isAuthenticated, async (ctx) => {
+router.post('/api/apps/:appName/reload', isAdminAuthenticated, async (ctx) => {
     try {
         let {appName} = ctx.params
         let apps = await reloadApp(appName)
@@ -118,7 +118,7 @@ router.post('/api/apps/:appName/reload', isAuthenticated, async (ctx) => {
     }
 });
 
-router.post('/api/apps/:appName/restart', isAuthenticated, async (ctx) => {
+router.post('/api/apps/:appName/restart', isAdminAuthenticated, async (ctx) => {
     try {
         let {appName} = ctx.params
         let apps = await restartApp(appName)
@@ -138,7 +138,7 @@ router.post('/api/apps/:appName/restart', isAuthenticated, async (ctx) => {
     }
 });
 
-router.post('/api/apps/:appName/stop', isAuthenticated, async (ctx) => {
+router.post('/api/apps/:appName/stop', isAdminAuthenticated, async (ctx) => {
     try {
         let {appName} = ctx.params
         let apps = await stopApp(appName)

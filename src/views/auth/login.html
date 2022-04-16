@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <title>PM2 管理平台</title>
+    <title>PM2 筑客互联</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/jpg" href="/assets/images/app/favicon.ico"/>
     <script src="https://unpkg.com/@tabler/core@1.0.0-beta2/dist/js/tabler.min.js"></script>
@@ -14,22 +14,22 @@
     <form class="card card-md" action="/login" method="POST" autocomplete="off">
       <div class="card-body text-center">
         <div class="mb-4">
-          <h2 class="card-title">Application Login</h2>
+          <h2 class="card-title">PM2 筑客互联</h2>
         </div>
         <div class="mb-3">
           <span class="avatar avatar-xl mb-3" style="background-image: url(/assets/images/app/user.svg)"></span>
         </div>
         <div class="mb-3">
-          <input name="username" type="username" class="form-control text-center" placeholder="Username" value="<%= login.username %>" required>
+          <input name="username" type="username" class="form-control text-center" placeholder="用户名" value="<%= login.username %>" required>
         </div>
         <div class="mb-4">
-          <input name="password" type="password" class="form-control text-center" placeholder="Password" value="<%= login.password %>" required>
+          <input name="password" type="password" class="form-control text-center" placeholder="密码" value="<%= login.password %>" required>
         </div>
         <div class="mb-3">
           <button class="btn btn-primary w-100" type="submit">
             <!-- Download SVG icon from http://tabler-icons.io/i/lock-open -->
             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><rect x="5" y="11" width="14" height="10" rx="2"></rect><circle cx="12" cy="16" r="1"></circle><path d="M8 11v-5a4 4 0 0 1 8 0"></path></svg>
-            Login
+            登录
           </button>
         </div>
         <% if(login.error){ %>
